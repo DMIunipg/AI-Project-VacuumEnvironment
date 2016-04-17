@@ -11,7 +11,7 @@ You must have [kivy](http://kivy.org/#home) installed on your system.
 * [Install Kivy on Windows](https://kivy.org/docs/installation/installation-windows.html)
 * [Install kivy on Mac](https://kivy.org/docs/installation/installation-osx.html)
 
-**Note**: that Kivi dependencies installation command for Windows installation (the one on the official guide page) can give problems: to solve, just put the two commands in a single line, deleting the separation backslash between the two, which is only for visualization purposes 
+**Note**: that Kivy dependencies installation command for Windows installation (the one on the official guide page) can give problems: to solve, just put the two commands in a single line, deleting the separation backslash between the two, which is only for visualization purposes 
 
 ## Run the application
 
