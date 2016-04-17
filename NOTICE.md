@@ -9,4 +9,5 @@ during the academic year 2013/2014 inspiring from the exercises from the book "A
 * Date of creation of the Vacuum Cleaner Environment:   Spring 2014
 * Last update: Spring 2016
 * License: Apache License 2.0
+
 ###----------------------------------------------------------------###
