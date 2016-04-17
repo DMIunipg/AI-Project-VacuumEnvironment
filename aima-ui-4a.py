@@ -104,7 +104,9 @@ class Renderer(Widget):
                               pos=self.real_pos(*wall.location),
                               size=self._tile_size)
                 for dirt in dirts:
-                    Color(0.9, 0, 0, 0.6)
+                    # Color(0.9, 0, 0, 0.6)
+                    # 2016: campo trivelle. RGB=(51, 153, 255)
+                    Color(0.2, 0.6, 1, 1)
                     Rectangle(
                         pos=self.real_pos(*dirt.location),
                         size=self._tile_size)
@@ -113,20 +115,23 @@ class Renderer(Widget):
                               pos=self.real_pos(*dirt.location),
                               size=self._tile_size)
                 for clean in cleans:
-                    Color(0, 0.9, 0, 0.6)
+                    # Color(0, 0.9, 0, 0.6)
+                    # 2016: campo trivelle. RGB=(51, 153, 255)
+                    Color(0.2, 0.6, 1, 1)
                     Rectangle(
                         pos=self.real_pos(*clean.location),
                         size=self._tile_size)
                 for agent in agents:
                     Color(1, 1, 1, 1)
                     Rectangle(
-                        texture=self._imgs.get(agent.img if agent.img is not None else agent.id.lower()).texture,
+                        texture=self._imgs.get(
+                            agent.img if agent.img is not None else agent.id.lower()).texture,
                         pos=self.real_pos(*agent.location),
                         size=self._tile_size)
 
 
-
 class ToggleButton(ToggleButtonBehavior, Image):
+
     def __init__(self, **kwargs):
         super(ToggleButton, self).__init__(**kwargs)
         self.source = 'atlas://data/images/defaulttheme/checkbox_off'
@@ -136,7 +141,6 @@ class ToggleButton(ToggleButtonBehavior, Image):
             self.source = 'atlas://data/images/defaulttheme/checkbox_on'
         else:
             self.source = 'atlas://data/images/defaulttheme/checkbox_off'
-
 
 
 class VacuumEnv(App):
@@ -157,7 +161,8 @@ class VacuumEnv(App):
         }
 
         self._loading = gen_popup("WARNING", "Loading...", dismiss=False)
-        self._load_done = gen_popup("INFO", "All resources loaded", dismiss=True)
+        self._load_done = gen_popup(
+            "INFO", "All resources loaded", dismiss=True)
 
     def _resize_env(self, *largs):
         self._wid.set_tile_size(self._env)
@@ -180,9 +185,11 @@ class VacuumEnv(App):
         self._maps = env_list.get_maps()
 
         for num, spinner in enumerate(spinner_list, 1):
-            spinner.values =["agent_{0}".format(num)] + [elm for elm in sorted(self._agents.keys())]
+            spinner.values = [
+                "agent_{0}".format(num)] + [elm for elm in sorted(self._agents.keys())]
 
-        spinner_map.values = [elm for elm in sorted(self._maps.keys())] + ['Maps']
+        spinner_map.values = [
+            elm for elm in sorted(self._maps.keys())] + ['Maps']
         self._loading.dismiss()
         self._load_done.open()
 
@@ -233,7 +240,8 @@ class VacuumEnv(App):
             kwargs['label_steps'].text = '{0}'.format(self._step)
             for id_, label in kwargs['label_agents'].items():
                 if self._agent_objs[id_] is not None:
-                    label.text = "{0}".format(self._agent_objs[id_].performance)
+                    label.text = "{0}".format(
+                        self._agent_objs[id_].performance)
 
     def evt_100_steps(self, steps, *largs, **kwargs):
         if self._env is not None:
@@ -241,7 +249,8 @@ class VacuumEnv(App):
                 self._100_steps_pressed = True
                 kwargs['btn_100step'].state = 'down'
                 self.step(*largs, **kwargs)
-                Clock.schedule_once(partial(self.evt_100_steps, steps-1, *largs, **kwargs), 1. / 30.)
+                Clock.schedule_once(
+                    partial(self.evt_100_steps, steps-1, *largs, **kwargs), 1. / 30.)
             elif steps < 100:
                 if steps == 0:
                     kwargs['btn_100step'].state = 'normal'
@@ -249,7 +258,8 @@ class VacuumEnv(App):
                 else:
                     kwargs['btn_100step'].state = 'down'
                     self.step(*largs, **kwargs)
-                    Clock.schedule_once(partial(self.evt_100_steps, steps-1, *largs, **kwargs), 1. / 30.)
+                    Clock.schedule_once(
+                        partial(self.evt_100_steps, steps-1, *largs, **kwargs), 1. / 30.)
 
     def evt_step(self, *largs, **kwargs):
         Clock.schedule_once(partial(self.step, *largs, **kwargs))
@@ -272,7 +282,7 @@ class VacuumEnv(App):
                                             location=self._env.random_location())
                     else:
                         self._env.add_thing(self._agent_objs[spinner.id],
-                                                location=self._env.start_from)
+                                            location=self._env.start_from)
             self._wid.set_tile_size(self._env)
             self._wid.draw(self._env)
 
@@ -281,7 +291,8 @@ class VacuumEnv(App):
 
         ##
         # First row
-        label_steps = Label(text='{0}'.format(self._step), color=(0.1, 1, 0.1, 1))
+        label_steps = Label(
+            text='{0}'.format(self._step), color=(0.1, 1, 0.1, 1))
 
         btn_load = Button(text='Load')
 
@@ -298,7 +309,8 @@ class VacuumEnv(App):
             values=["Maps"]
         )
 
-        label_random_pos = Label(text='rand p', size=(100, 42), size_hint=(None, 1))
+        label_random_pos = Label(
+            text='rand p', size=(100, 42), size_hint=(None, 1))
         t_btn_random = ToggleButton(size=(64, 42), size_hint=(None, 1))
 
         btn_reset = Button(text='Reset')
@@ -429,10 +441,10 @@ class VacuumEnv(App):
                                      t_btn_random,
                                      label_steps,
                                      [
-                                        spinn_agent_01,
-                                        spinn_agent_02,
-                                        spinn_agent_03,
-                                        spinn_agent_04
+                                         spinn_agent_01,
+                                         spinn_agent_02,
+                                         spinn_agent_03,
+                                         spinn_agent_04
                                      ],
                                      [
                                          label_agent_01,
@@ -441,11 +453,16 @@ class VacuumEnv(App):
                                          label_agent_04,
                                      ])
 
-        spinn_map.bind(text=partial(self.select_map, t_btn_random, label_steps))
-        spinn_agent_01.bind(text = partial(self.select_agent, spinn_agent_01.id, t_btn_random,))
-        spinn_agent_02.bind(text = partial(self.select_agent, spinn_agent_02.id, t_btn_random,))
-        spinn_agent_03.bind(text = partial(self.select_agent, spinn_agent_03.id, t_btn_random,))
-        spinn_agent_04.bind(text = partial(self.select_agent, spinn_agent_04.id, t_btn_random,))
+        spinn_map.bind(
+            text=partial(self.select_map, t_btn_random, label_steps))
+        spinn_agent_01.bind(
+            text=partial(self.select_agent, spinn_agent_01.id, t_btn_random,))
+        spinn_agent_02.bind(
+            text=partial(self.select_agent, spinn_agent_02.id, t_btn_random,))
+        spinn_agent_03.bind(
+            text=partial(self.select_agent, spinn_agent_03.id, t_btn_random,))
+        spinn_agent_04.bind(
+            text=partial(self.select_agent, spinn_agent_04.id, t_btn_random,))
 
         splitter.on_press = partial(self.splitter_on_press)
         splitter.on_release = partial(self.splitter_on_release)

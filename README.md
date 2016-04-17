@@ -1,7 +1,7 @@
 AI-Project-VacuumEnvironment
 ============================
 
-An environment to test a vacuum agent, created for the university project of Prof. Milani's Artificial Intelligence course at Department ofMathematicasandComputer Science, University ofPerugia, and inspired from a problem posed by Stuart Russell and Peter Norvig in the book "Artificial Intelligence: A Modern Approach".
+An environment to test a vacuum agent, created for the university project of Prof. Milani's Artificial Intelligence course at Department of Mathematics and Computer Science, University of Perugia, and inspired from a problem posed by Stuart Russell and Peter Norvig in the book "Artificial Intelligence: A Modern Approach".
 
 ## Dependencies
 
@@ -10,6 +10,8 @@ You must have [kivy](http://kivy.org/#home) installed on your system.
 * [Download Kivy](https://kivy.org/#download)
 * [Install Kivy on Windows](https://kivy.org/docs/installation/installation-windows.html)
 * [Install kivy on Mac](https://kivy.org/docs/installation/installation-osx.html)
+
+**Note**: that Kivi dependencies installation command for Windows installation (the one on the official guide page) can give problems: to solve, just put the two commands in a single line, deleting the separation backslash between the two, which is only for visualization purposes 
 
 ## Run the application
 
@@ -102,14 +104,27 @@ This project is based on [aima-python](https://code.google.com/p/aima-python/) f
 
 In this section will be mentioned all the people who have contributed to the creation of this program (the list will be in alphabetic order), divided by university department or private groups/people.
 
-University of Perugia, Dept. of Maths and Computer Science, AI 2013-2014: 
-* Biondi Giulio (student)
-* Franzoni Valentina (teaching assistant)
-* Milani Alfredo (professor)
-* Parcus Robert (student)
-* Tracolli Mirco (student, first creation)
-* to complete...
+University of Perugia, Dept. of Maths and Computer Science: all the students for each year, contributing with their own agent and some personalized images for the agent graphics
 
-## License
+AI 2013-2014, University of Perugia, Dept. of Maths and Computer Science: 
+* Tracolli Mirco (student, first creation)
+* Biondi Giulio (student)
+* Parcus Robert (student)
+* Franzoni Valentina (research assistant)
+* Milani Alfredo (professor)
+
+AI 2015-2016, University of Perugia, Dept. of Maths and Computer Science, AI 2013-2014: 
+* Tracolli Mirco (graduating student)
+* Franzoni Valentina (teacher assistant)
+* Milani Alfredo (professor)
+
+
+## Licenses
+For text and images:
 Creative Common BY-NC-SA: Share Alike, Non Commercial, give Attribution for the credits to the original authors: http://creativecommons.org/licenses/by-nc-sa/4.0/
 
+For code:
+Apache Licence 2.0
+give attribution, free for any use, no responsability to the authors (AS IS) 
+http://www.apache.org/licenses/
+also see the LICENCE file

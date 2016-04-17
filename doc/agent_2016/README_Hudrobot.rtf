@@ -1,0 +1,70 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf460
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Bold;\f2\fnil\fcharset0 Menlo-BoldItalic;
+\f3\fnil\fcharset0 Menlo-Italic;}
+{\colortbl;\red255\green255\blue255;\red85\green142\blue40;\red28\green28\blue28;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww14280\viewh16000\viewkind0
+\deftab720
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri0\partightenfactor0
+
+\f0\fs24 \cf2 AI-Project-VacuumEnvironment\
+============================\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri0\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri0\partightenfactor0
+
+\f1\b \cf0 OBBIETTIVO
+\f0\b0 :\uc0\u8232 	Sviluppare agenti "spazzini" semplici che usino delle funzioni basilari, aspira, muovi a nord/est/sud/oves, che usino caratteristicamente una logica puramente "randomica", che determinino cio\'e8 le loro scelte in base a delle funzioni euristiche che calcolino la scelta migliore in base a delle percentuali assegnate ad una delle quattro direzioni possibili.\
+\
+
+\f1\b SVILUPPO:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri0\partightenfactor0
+
+\f0\b0 \cf0 	viene utilizzata una funzione euristica molto semplice, che associa in base alla memoria e alla percezione dell'Agente, un valore impostato ad ogniuna delle 4 direzioni possibili, disposte su di un semplice array monodimensionale.\uc0\u8232 Ogni modello, sviluppa e assenga valori peculiari in base alle scelte e alla disponibilit\'e0 di dati.\u8232 Importante \'e8 la presenza di agenti concorrenti o alleati.\
+Quando si hanno due agenti alleati nell\'92ambiente si \'e8 scelto di identificare l\'92Agente con l\'92id di esecuzione "pi\'f9 piccolo" come Agent MASTER, mentre l\'92agente con id pi\'f9 grande verr\'e0 identificato come SLAVE. Questo, determina una logica di movimento ben precisa.\
+	- Il MASTER come prima mossa si muove e preferir\'e0 la direzione diametralmente opposta sia allo SLAVE che agli altri agenti concorrenti. \
+	- Lo SLAVE come prima mossa pulisce la casella dove si trova e successivamente (se esiste l\'92avversario) tenter\'e0 di muoversi nella direzione adiacente rispetto all'avversario, o quanto pi\'f9 vicino possibile.\
+\
+Come "Stato terminale" si \'e8 deciso di impostare un valore che rappresenta limite di passi, in modo che dopo un numero stabilito di movimenti (esclusi i Bump) gli agenti si fermano. Ad ogni Bump, verr\'e0 incrementato il valore, ad ogni passaggio su una locazione gi\'e0 pulita, il valore verr\'e0 decrementato.\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri0\partightenfactor0
+
+\f1\b \cf0 \ul \ulc0 Hudrobot
+\f0\b0  Agente senza memoria 
+\f2\i\b MultiVAC 
+\f0\i0\b0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri0\partightenfactor0
+\cf0 \ulnone L'agente sceglier\'e0 una direzione in maniera "random" rispetto ai valori nell'array 
+\f3\i perc_attuale
+\f0\i0  (che corrisponderanno ai punti cardinali \cf3 North, East , South, West).\uc0\u8232 Questo array sar\'e0 inizializzato in modo che il valore favorito nella prima mossa in assoluto sia in direzione North.\
+\cf0 Invece, nelle mosse successive alla prima, la strategia \'e8 quella di abbassare la probabilit\'e0 in direzione di provenienza dell\'92agente in modo da agevolare il movimento in direzione di caselle non ancora visitate.\
+Nel caso che l\'92agente causi un urto contro una parete (\'91Bump\'92) verr\'e0 azzerato il valore della posizione in direzione del Bump, ed il suo valore % verr\'e0 ridistribuito nelle altre direzioni, dando prevalenza alla direzione suggerita dai percept degli agenti concorrenti o alleati.\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri0\partightenfactor0
+
+\f1\b \cf0 \ul HudroboPro
+\f0\b0  Agente con Memoria 
+\f2\i\b MultiVAF \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri0\partightenfactor0
+
+\f0\i0\b0 \cf0 \ulnone L\'92agente con memoria si basa sulla creazione delle posizioni plausibili o intuite.\ul \
+\ulnone Infatti l\'92agente ha la capacit\'e0 di :\
+	1. memorizzare la posizione in cui \'e8 stato (sia che abbia effettuato la pulizia o meno);\
+	2. memorizza le posizioni quando si imbatte nel muro \'92Bump\'92 ; \
+\
+\pard\tx529\pardeftab720\ri0\partightenfactor0
+\cf0 Entrambe le dimensioni, vengono memorizzate in due liste infinite, in cui si tiene traccia cio\'e8 sia delle locazioni visitate, sia dei "muri".\uc0\u8232 Ad ogni passaggio, l'agente singolo ricrea l'array di percentuali (%) direzionali, assegnando dei valori specifici all'array di direzioni, ricordandosi o intuendo cosa si trovi nelle posizioni immediatamente adiacenti alla propria.\u8232 Le quattro direzioni avranno somme o assegnazioni tramite parametri ben precisi:\
+- presenza di muri, assegna 0\uc0\u8232 - locazione inesplorata, somma un 50%\
+- locazione gi\'e0 visitata, somma 10%\
+- locazione suggerita dall'ascolto degli agenti, smma un 30%\
+- locazione susseguente ad un precedente "Suck" ed ancora inesplorata, somma 70%\
+- locazione limitrofa a delle zone pulite, sottrae 10%\
+\
+Alla fine delle assegnazioni e addizioni, il vettore di percentuali viene normalizzato da 0 a 100.\
+A questo particolare agente si \'e8 scelto di dare la direzione preferenziale nel calcolo "dell'euristica\'94 nella direzione "East\'94.\
+}

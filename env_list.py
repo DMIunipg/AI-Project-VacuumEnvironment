@@ -21,6 +21,7 @@ class VacuumMap2(VacuumEnvironment):
         self.add_thing(Wall(), (3, 3))
         self.dirty_all()
 
+
 class VacuumMap3(VacuumEnvironment):
 
     def __init__(self):
@@ -181,15 +182,144 @@ class VacuumMap9(VacuumEnvironment):
         self.start_from = (2, 1)
 
 
+class VacuumMap10(VacuumEnvironment):
+
+    def __init__(self):
+        super(VacuumMap10, self).__init__(10, 10)
+        self.init_env("""WWWWWWWWWW
+WDDDDDDDWW
+WWDDWDDDWW
+WDDDDDDDDW
+WDDWDDDWDW
+WDDDDDDDDW
+WDDDDDDDDW
+WWWDDDDDWW
+WDDDDWWDWW
+WWWWWWWWWW""")
+        self.start_from = (1, 8)
+
+
+class VacuumMap11(VacuumEnvironment):
+
+    def __init__(self):
+        super(VacuumMap11, self).__init__(10, 10)
+        self.init_env("""WWWWWWWWWW
+WDDDDDDDDW
+WDDDDWDDDW
+WDDDDWDDDW
+WDDDDWDDDW
+WDDDDWDDDW
+WDDDDWDDDW
+WDDDDWDDDW
+WDDDDDDDDW
+WWWWWWWWWW""")
+        self.start_from = (1, 8)
+
+
+class VacuumMap12(VacuumEnvironment):
+
+    def __init__(self):
+        super(VacuumMap12, self).__init__(10, 10)
+        self.init_env("""WWWWWWWWWW
+WDDDDDDDDW
+WDDDDWDDDW
+WDDDDWDDDW
+WDDDDWDDDW
+WDDDDDDDDW
+WDDDDWDDDW
+WDDDDWDDDW
+WDDDDDDDDW
+WWWWWWWWWW""")
+        self.start_from = (1, 8)
+
+
+class VacuumMap13(VacuumEnvironment):
+
+    def __init__(self):
+        super(VacuumMap13, self).__init__(10, 10)
+        self.init_env("""WWWWWWWWWW
+WDDDDDDDDW
+WDWWWWWWDW
+WDWWWWWWDW
+WDWWWWWWDW
+WDWWWWWWDW
+WDWWWWWWDW
+WDWWWWWWDW
+WDDDDDDDDW
+WWWWWWWWWW""")
+        self.start_from = (1, 8)
+
+
+class VacuumMap14(VacuumEnvironment):
+
+    def __init__(self):
+        super(VacuumMap14, self).__init__(12, 12)
+        self.init_env("""WWWWWWWWWWWW
+WDDDDDDDDDDW
+WDWWWWWWWWDW
+WDDDDDDDDWDW
+WDWWWWWWDWDW
+WDWDDDDWDWDW
+WDWDWWDWDWDW
+WDWDWWWWDWDW
+WDWDDDDDDWDW
+WDWWWWWWWWDW
+WDDDDDDDDDDW
+WWWWWWWWWWWW""")
+        self.start_from = (1, 10)
+
+
+class VacuumMap15(VacuumEnvironment):
+
+    def __init__(self):
+        super(VacuumMap15, self).__init__(12, 12)
+        self.init_env("""WWWWWWWWWWWW
+WDDDDDDDDDDW
+WDWCWCCWCCDW
+WDDWDDWDDCDW
+WDWCCWCWDWDW
+WDCDWDWCWCDW
+WDCDWCDCDCDW
+WDCDCWWCDCDW
+WDCDDDDDDCDW
+WDWCWCWCWCDW
+WDDDDDDDDDDW
+WWWWWWWWWWWW""")
+        self.start_from = (1, 10)
+
+
+class VacuumMapN(VacuumEnvironment):
+
+    def __init__(self):
+        super(VacuumMapN, self).__init__(10, 10)
+        self.init_env("""WWWWWWWWWW
+WDDDDDDDDW
+WDDDDDDDDW
+WDDDDDDDDW
+WDDDDDDDDW
+WDDDDDDDDW
+WDDDDDDDDW
+WDDDDDDDDW
+WDDDDDDDDW
+WWWWWWWWWW""")
+        self.start_from = (1, 8)
+
+
 def get_maps():
     return {
-        "VacuumMap1": VacuumMap1,
-        "VacuumMap2": VacuumMap2,
-        "VacuumMap3": VacuumMap3,
-        "VacuumMap4": VacuumMap4,
-        "VacuumMap5": VacuumMap5,
-        "VacuumMap6": VacuumMap6,
-        "VacuumMap7": VacuumMap7,
-        "VacuumMap8": VacuumMap8,
-        "VacuumMap9": VacuumMap9
+        # "VacuumMap1": VacuumMap1,
+        # "VacuumMap2": VacuumMap2,
+        # "VacuumMap3": VacuumMap3,
+        # "VacuumMap4": VacuumMap4,
+        # "VacuumMap5": VacuumMap5,
+        # "VacuumMap6": VacuumMap6,
+        # "VacuumMap7": VacuumMap7,
+        # "VacuumMap8": VacuumMap8,
+        # "VacuumMap9": VacuumMap9,
+        "VacuumMap10": VacuumMap10,
+        "VacuumMap11": VacuumMap11,
+        "VacuumMap12": VacuumMap12,
+        "VacuumMap13": VacuumMap13,
+        "VacuumMap14": VacuumMap14,
+        "VacuumMap15": VacuumMap15
     }
